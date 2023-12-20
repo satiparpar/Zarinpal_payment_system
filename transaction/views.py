@@ -5,6 +5,10 @@ from django.shortcuts import redirect, render
 from .models import Transaction
 
 
+def home(request):
+    return render(request, 'transaction/home.html')
+
+
 def initiate_payment(request):
     amount = 1000000
     callback_url = settings.ZARINPAL_CALLBACK_URL
@@ -46,4 +50,3 @@ def verify_payment(request):
             return HttpResponse('Payment verification failed.')
     else:
         return HttpResponse('Payment failed or cancelled by user.')
-
